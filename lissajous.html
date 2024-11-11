@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js"
+    ></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="lissajous.js"></script>
+    <title>Lissajous Curve</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="content">
+      <h1>Curva de Lissajous</h1>
+      <p>
+        A Curva de Lissajous é uma curva definida por um sistema de equações
+        paramétricas envolvendo as funções seno e cosseno. São encontradas em
+        áreas como física, processamento de sinais e até arte e design, pois seu
+        gráfico costuma ser esteticamente agradável.
+      </p>
+
+      <h2>Definindo uma Curva de Lissajous</h2>
+      <p>
+        O sistema que define a curva é constituído pelas seguinte equações: $$
+        \begin{matrix} x\,(t) = A\sin(at + \delta) \\ y\,(t) = B\sin(bt)
+        \end{matrix} $$ onde
+      </p>
+      <ul>
+        <li>
+          \(A\) e \(B\) são as <b>amplitudes</b> das oscilações nas direções
+          \(x\) e \(y\), respectivamente.
+        </li>
+        <li>
+          \(a\) e \(b\) são as <b>frequências</b> das oscilações nas direções
+          \(x\) e \(y\), respectivamente.
+        </li>
+        <li>
+          \(\delta\) é o <b>deslocamento de </b> entre as oscilações \(x\) e
+          \(y\).
+        </li>
+        <li>\(t\) representa o <b>tempo</b>.</li>
+      </ul>
+
+      <h2>Papel dos parâmetros</h2>
+      <ol>
+        <li>
+          Amplitude<br />Os valores de \(A\) e \(B\) esticam ou comprimem a
+          curva ao longo dos eixos \(x\) e \(y\).
+        </li>
+        <li>
+          Frequência<br />A razão \(\frac{a}{b}\) determina a forma e a simetria
+          da curva. Quando \(\frac{a}{b}\) é um número racional, a curva é
+          fechada e forma padrões simétricos.
+        </li>
+        <li>
+          Deslocamento de fase<br />Controla a orientação e a simetria da curva.
+          Se \(\delta = 0\), a curva tem certas propriedades simétricas, como o
+          espelhamento nos eixos.
+        </li>
+      </ol>
+
+      <h2>Exemplos</h2>
+      <h3>Frequências em razão simples (1:1)</h3>
+      <div class="ex-grid">
+        <div class="ex-params">
+          <b>Parâmetros</b>
+          <p>\(a=b=1\)</p>
+          <p>\(\delta=0\)</p>
+        </div>
+        <div class="ex-equations">
+          <b>Equações</b>
+          <p>\(x\,(t)=A\sin(t)\)</p>
+          <p>\(y\,(t)=B\sin(t)\)</p>
+        </div>
+        <div class="ex-graphs">
+          <b>Gráfico</b>
+          <div id="ex-1"></div>
+          <script>
+            drawLissajousCurve("#ex-1", 1, 1, 1, 1, 0, 2 * Math.PI);
+          </script>
+        </div>
+      </div>
+
+      <h3>Circunferência (1:1)</h3>
+      <div class="ex-grid">
+        <div class="ex-params">
+          <b>Parâmetros</b>
+          <p>\(a=b=1\)</p>
+          <p>\(\delta=\dfrac{\pi}{2}\)</p>
+        </div>
+        <div class="ex-equations">
+          <b>Equações</b>
+          <p>\(x\,(t)=A\sin(t)\)</p>
+          <p>\(y\,(t)=B\cos(t)\)</p>
+        </div>
+        <div class="ex-graphs">
+          <b>Gráfico</b>
+          <div id="ex-2"></div>
+          <script>
+            drawLissajousCurve("#ex-2", 1, 1, 1, 1, Math.PI / 2, 2 * Math.PI);
+          </script>
+        </div>
+      </div>
+
+      <h3>Curvas Fechadas (2:1)</h3>
+      <div class="ex-grid">
+        <div class="ex-params">
+          <b>Parâmetros</b>
+          <p>\(a=2\)</p>
+          <p>\(b=1\)</p>
+          <p>\(\delta=0\)</p>
+        </div>
+        <div class="ex-equations">
+          <b>Equações</b>
+          <p>\(x\,(t)=A\sin(2t)\)</p>
+          <p>\(y\,(t)=B\sin(t)\)</p>
+        </div>
+        <div class="ex-graphs">
+          <b>Gráfico</b>
+          <div id="ex-3"></div>
+          <script>
+            drawLissajousCurve("#ex-3", 1, 1, 2, 1, 0, 2 * Math.PI);
+          </script>
+        </div>
+      </div>
+
+      <h3>Padrões Complexos (3:2)</h3>
+      <div class="ex-grid">
+        <div class="ex-params">
+          <b>Parâmetros</b>
+          <p>\(a=3\)</p>
+          <p>\(b=2\)</p>
+          <p>\(\delta=0\)</p>
+        </div>
+        <div class="ex-equations">
+          <b>Equações</b>
+          <p>\(x\,(t)=A\sin(3t)\)</p>
+          <p>\(y\,(t)=B\sin(2t)\)</p>
+        </div>
+        <div class="ex-graphs">
+          <b>Gráfico</b>
+          <div id="ex-4"></div>
+          <script>
+            drawLissajousCurve("#ex-4", 1, 1, 3, 2, 0, 2 * Math.PI);
+          </script>
+        </div>
+      </div>
+
+      <h2>Playground</h2>
+      <p>Utilize os botões para alterar a curva.</p>
+      <div class="slider-grid">
+        <div class="slidecontainer">
+          \(A\)
+          <input
+            class="slider"
+            type="range"
+            name="slider-A"
+            id="slider-A"
+            min="0.1"
+            max="1"
+            step="0.1"
+            oninput="drawPlaygroundGraph()"
+          />
+          <span class="min">\(0.1\)</span>
+          <span class="max">\(1\)</span>
+        </div>
+        <div class="slidecontainer">
+          \(B\)
+          <input
+            class="slider"
+            type="range"
+            name="slider-B"
+            id="slider-B"
+            min="0.1"
+            max="1"
+            step="0.1"
+            oninput="drawPlaygroundGraph()"
+          />
+          <span class="min">\(0.1\)</span>
+          <span class="max">\(1\)</span>
+        </div>
+        <div class="slidecontainer">
+          \(a\)
+          <input
+            class="slider"
+            type="range"
+            name="slider-a"
+            id="slider-a"
+            min="-10"
+            max="10"
+            step="1"
+            oninput="drawPlaygroundGraph()"
+          />
+          <span class="min">\(-10\)</span>
+          <span class="max">\(10\)</span>
+        </div>
+        <div class="slidecontainer">
+          \(b\)
+          <input
+            class="slider"
+            type="range"
+            name="slider-b"
+            id="slider-b"
+            min="-10"
+            max="10"
+            step="1"
+            oninput="drawPlaygroundGraph()"
+          />
+          <span class="min">\(-10\)</span>
+          <span class="max">\(10\)</span>
+        </div>
+        <div class="slidecontainer">
+          \(\delta\)
+          <input
+            class="slider"
+            type="range"
+            name="slider-delta"
+            id="slider-delta"
+            min="0"
+            max="3.14"
+            step="0.01"
+            oninput="drawPlaygroundGraph()"
+          />
+          <span class="min">\(0\)</span>
+          <span class="max">\(\pi\)</span>
+        </div>
+      </div>
+      <div id="playground-graph">
+        <script>
+          function drawPlaygroundGraph() {
+            d3.select("#playground-graph svg").remove();
+            const A = +document.getElementById("slider-A").value;
+            const B = +document.getElementById("slider-B").value;
+            const a = +document.getElementById("slider-a").value;
+            const b = +document.getElementById("slider-b").value;
+            const delta = +document.getElementById("slider-delta").value;
+            drawLissajousCurve(
+              "#playground-graph",
+              A,
+              B,
+              a,
+              b,
+              delta,
+              2 * Math.PI
+            );
+          }
+          drawPlaygroundGraph();
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
