@@ -151,7 +151,7 @@
       </div>
 
       <h2>Playground</h2>
-      <p>Utilize os botões para alterar a curva.</p>
+      <p>Utilize os <i>sliders</i> para alterar a curva.</p>
       <div class="slider-grid">
         <div class="slidecontainer">
           \(A\)
@@ -162,7 +162,7 @@
             id="slider-A"
             min="0.1"
             max="1"
-            step="0.1"
+            step="0.01"
             oninput="drawPlaygroundGraph()"
           />
           <span class="min">\(0.1\)</span>
@@ -177,7 +177,7 @@
             id="slider-B"
             min="0.1"
             max="1"
-            step="0.1"
+            step="0.01"
             oninput="drawPlaygroundGraph()"
           />
           <span class="min">\(0.1\)</span>
@@ -190,8 +190,8 @@
             type="range"
             name="slider-a"
             id="slider-a"
-            min="-10"
-            max="10"
+            min="1"
+            max="15"
             step="1"
             oninput="drawPlaygroundGraph()"
           />
@@ -205,8 +205,8 @@
             type="range"
             name="slider-b"
             id="slider-b"
-            min="-10"
-            max="10"
+            min="1"
+            max="15"
             step="1"
             oninput="drawPlaygroundGraph()"
           />
@@ -221,36 +221,14 @@
             name="slider-delta"
             id="slider-delta"
             min="0"
-            max="3.14"
             step="0.01"
             oninput="drawPlaygroundGraph()"
           />
           <span class="min">\(0\)</span>
-          <span class="max">\(\pi\)</span>
+          <span class="max">\(2\pi\)</span>
         </div>
       </div>
-      <div id="playground-graph">
-        <script>
-          function drawPlaygroundGraph() {
-            d3.select("#playground-graph svg").remove();
-            const A = +document.getElementById("slider-A").value;
-            const B = +document.getElementById("slider-B").value;
-            const a = +document.getElementById("slider-a").value;
-            const b = +document.getElementById("slider-b").value;
-            const delta = +document.getElementById("slider-delta").value;
-            drawLissajousCurve(
-              "#playground-graph",
-              A,
-              B,
-              a,
-              b,
-              delta,
-              2 * Math.PI
-            );
-          }
-          drawPlaygroundGraph();
-        </script>
-      </div>
+      <div id="playground-graph"></div>
     </div>
   </body>
 </html>

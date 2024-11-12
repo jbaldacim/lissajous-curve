@@ -1,5 +1,8 @@
+d3.select("#slider-delta").attr("max", `${2 * Math.PI}`);
+d3.select("#slider-delta").attr("value", Math.PI / 2);
+
 function drawLissajousCurve(elementId, A, B, a, b, delta, duration) {
-  const width = 80;
+  const width = 500;
   const height = width;
   const padding = width * 0.05;
 
@@ -39,8 +42,12 @@ function drawLissajousCurve(elementId, A, B, a, b, delta, duration) {
     .datum(points)
     .attr("fill", "none")
     .attr("stroke", "firebrick")
-    .attr("stroke-width", 1)
-    .attr("d", line);
+    .attr("stroke-width", 2.5)
+    .attr("d", line)
+    .attr(
+      "transform",
+      `translate(${(width * (1 - A)) / 2}, ${(height * (1 - B)) / 2})`
+    );
 
   path
     .transition()
@@ -51,3 +58,23 @@ function drawLissajousCurve(elementId, A, B, a, b, delta, duration) {
       return d3.interpolate(`0,${length}`, `${length},${length}`);
     });
 }
+
+function drawPlaygroundGraph() {
+  d3.select("#playground-graph svg").remove();
+  const A = +document.getElementById("slider-A").value;
+  const B = +document.getElementById("slider-B").value;
+  const a = +document.getElementById("slider-a").value;
+  const b = +document.getElementById("slider-b").value;
+  const delta = +document.getElementById("slider-delta").value;
+  drawLissajousCurve("#playground-graph", A, B, a, b, delta, 2 * Math.PI);
+}
+
+window.onload = () => {
+  document.getElementById("slider-delta").setAttribute("max", 2 * Math.PI);
+  document.getElementById("slider-delta").setAttribute("value", Math.PI / 2);
+  document.getElementById("slider-a").setAttribute("value", 1);
+  document.getElementById("slider-b").setAttribute("value", 1);
+  document.getElementById("slider-A").setAttribute("value", 1);
+  document.getElementById("slider-B").setAttribute("value", 1);
+  drawPlaygroundGraph();
+};
