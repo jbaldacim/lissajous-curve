@@ -35,7 +35,7 @@ ol > li {
 
 .slider-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 5px;
   justify-items: center;
   justify-content: center;

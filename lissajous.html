@@ -195,8 +195,8 @@
             step="1"
             oninput="drawPlaygroundGraph()"
           />
-          <span class="min">\(-10\)</span>
-          <span class="max">\(10\)</span>
+          <span class="min">\(1\)</span>
+          <span class="max">\(15\)</span>
         </div>
         <div class="slidecontainer">
           \(b\)
@@ -210,8 +210,8 @@
             step="1"
             oninput="drawPlaygroundGraph()"
           />
-          <span class="min">\(-10\)</span>
-          <span class="max">\(10\)</span>
+          <span class="min">\(1\)</span>
+          <span class="max">\(15\)</span>
         </div>
         <div class="slidecontainer">
           \(\delta\)
@@ -226,6 +226,24 @@
           />
           <span class="min">\(0\)</span>
           <span class="max">\(2\pi\)</span>
+        </div>
+        <div class="slidecontainer">
+          <input
+            type="checkbox"
+            name="animate-delta-checkbox"
+            id="animate-delta-checkbox"
+            oninput="drawPlaygroundGraph()"
+          />
+          <span class="min">Animar valores de \(\delta\)</span>
+        </div>
+        <div class="slidecontainer">
+          <input
+            type="checkbox"
+            name="animate-path-checkbox"
+            id="animate-path-checkbox"
+            oninput="drawPlaygroundGraph()"
+          />
+          <span class="min">Animar desenho</span>
         </div>
       </div>
       <div id="playground-graph"></div>
